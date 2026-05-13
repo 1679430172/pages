@@ -1,0 +1,245 @@
+---
+import nav from '../data/nav.json';
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+}
+
+const { title = site.name } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={site.description} />
+    <title>{title} - {site.tagline}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav container">
+        <a href="/" class="logo">{site.name}</a>
+        <ul class="nav-links">
+          {nav.map((item: { label: string; href: string }) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+        <a href="#pricing" class="nav-cta">开始使用</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo">{site.name}</span>
+            <p>{site.description}</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-col">
+              <h4>产品</h4>
+              <a href="#">功能</a>
+              <a href="#">定价</a>
+              <a href="#">更新日志</a>
+            </div>
+            <div class="footer-col">
+              <h4>公司</h4>
+              <a href="#">关于我们</a>
+              <a href="#">博客</a>
+              <a href="#">招聘</a>
+            </div>
+            <div class="footer-col">
+              <h4>支持</h4>
+              <a href="#">帮助中心</a>
+              <a href="#">联系我们</a>
+              <a href="#">隐私政策</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 {site.name}. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primary: #6366f1;
+        --color-primary-dark: #4f46e5;
+        --color-bg: #ffffff;
+        --color-bg-alt: #f8fafc;
+        --color-text: #1e293b;
+        --color-text-muted: #64748b;
+        --color-border: #e2e8f0;
+        --radius: 8px;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--color-border);
+        z-index: 100;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        height: 64px;
+        gap: 32px;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 24px;
+        margin-left: auto;
+      }
+
+      .nav-links a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--color-text);
+      }
+
+      .nav-cta {
+        background: var(--color-primary);
+        color: white;
+        padding: 8px 16px;
+        border-radius: var(--radius);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+
+      .nav-cta:hover {
+        background: var(--color-primary-dark);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--color-text);
+        color: #cbd5e1;
+        padding: 64px 0 24px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1.5fr 2fr;
+        gap: 64px;
+        margin-bottom: 48px;
+      }
+
+      .footer-brand p {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .footer-brand .logo {
+        color: white;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .footer-col h4 {
+        color: white;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .footer-col a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+      }
+
+      .footer-col a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #334155;
+        padding-top: 24px;
+        font-size: 0.85rem;
+        opacity: 0.7;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .footer-links {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </body>
+</html>

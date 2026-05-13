@@ -1,0 +1,183 @@
+---
+import hero from '../data/hero.json';
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{hero.headline}</h1>
+    <p class="hero-sub">{hero.subheadline}</p>
+    <div class="hero-actions">
+      <a href={hero.primaryCTA.href} class="btn btn-primary">{hero.primaryCTA.text}</a>
+      <a href={hero.secondaryCTA.href} class="btn btn-secondary">{hero.secondaryCTA.text}</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="mockup-content">
+          <div class="mockup-sidebar">
+            <div class="mockup-item"></div>
+            <div class="mockup-item active"></div>
+            <div class="mockup-item"></div>
+          </div>
+          <div class="mockup-main">
+            <div class="mockup-card"></div>
+            <div class="mockup-card"></div>
+            <div class="mockup-card"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #1e293b 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .hero-visual {
+    margin-top: 64px;
+  }
+
+  .hero-mockup {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .mockup-bar {
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mockup-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e8f0;
+  }
+
+  .mockup-content {
+    display: flex;
+    min-height: 300px;
+  }
+
+  .mockup-sidebar {
+    width: 200px;
+    padding: 16px;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mockup-item {
+    height: 32px;
+    background: #f1f5f9;
+    border-radius: 6px;
+  }
+
+  .mockup-item.active {
+    background: #e0e7ff;
+    border: 1px solid #c7d2fe;
+  }
+
+  .mockup-main {
+    flex: 1;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-content: start;
+  }
+
+  .mockup-card {
+    height: 120px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 120px 0 60px;
+    }
+
+    .mockup-sidebar {
+      display: none;
+    }
+
+    .mockup-main {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

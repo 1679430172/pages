@@ -1,0 +1,29 @@
+[
+  {
+    "name": "免费版",
+    "price": "¥0",
+    "period": "/月",
+    "description": "适合个人和小团队入门",
+    "features": ["最多 5 名成员", "3 个项目", "基础看板视图", "社区支持"],
+    "cta": "免费开始",
+    "highlighted": false
+  },
+  {
+    "name": "专业版",
+    "price": "¥99",
+    "period": "/人/月",
+    "description": "适合成长中的团队",
+    "features": ["无限成员", "无限项目", "高级分析面板", "自动化工作流", "优先支持"],
+    "cta": "开始试用",
+    "highlighted": true
+  },
+  {
+    "name": "企业版",
+    "price": "联系我们",
+    "period": "",
+    "description": "适合大型组织",
+    "features": ["所有专业版功能", "SSO 单点登录", "专属客户经理", "自定义集成", "SLA 保障"],
+    "cta": "联系销售",
+    "highlighted": false
+  }
+]
